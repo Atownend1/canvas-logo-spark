@@ -13,7 +13,7 @@ const Index = () => {
       }}
     >
       {/* Logo */}
-      <div className="relative z-10 animate-fade-in overflow-hidden max-w-2xl">
+      <div className="relative z-10 animate-fade-in overflow-hidden w-full max-w-5xl mx-auto">
         <img 
           src={axionxLogo} 
           alt="AxionX Logo" 
