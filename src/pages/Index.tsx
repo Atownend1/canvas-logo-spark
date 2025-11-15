@@ -12,11 +12,6 @@ const Index = () => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      {/* Animated Sunshine Effect */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="sunshine-beam animate-sunshine" />
-      </div>
-
       {/* Logo */}
       <div className="relative z-10 animate-fade-in overflow-hidden max-w-2xl">
         <img 
