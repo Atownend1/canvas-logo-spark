@@ -4,7 +4,7 @@ import axionxLogo from "@/assets/axionx-logo.png";
 const Index = () => {
   return (
     <div 
-      className="min-h-screen flex items-center justify-center overflow-hidden relative"
+      className="min-h-[calc(100vh+50px)] flex items-center justify-center overflow-hidden relative"
       style={{
         backgroundImage: `url(${heroBackground})`,
         backgroundSize: 'cover',
@@ -20,7 +20,7 @@ const Index = () => {
           className="w-full px-8"
           style={{
             clipPath: 'inset(0 35% 0 0)',
-            transform: 'translateX(0px) translateY(-50px)'
+            transform: 'translateX(30px) translateY(-50px)'
           }}
         />
       </div>
