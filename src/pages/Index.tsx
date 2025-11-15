@@ -8,7 +8,7 @@ const Index = () => {
       style={{
         backgroundImage: `url(${heroBackground})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center calc(50% - 70px)',
+        backgroundPosition: 'center calc(50% - 60px)',
         backgroundRepeat: 'no-repeat'
       }}
     >
