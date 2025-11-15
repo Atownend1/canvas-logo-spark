@@ -20,7 +20,7 @@ const Index = () => {
           className="w-full px-8"
           style={{
             clipPath: 'inset(0 35% 0 0)',
-            transform: 'translateX(30px) translateY(-50px)'
+            transform: 'translateX(80px) translateY(-50px)'
           }}
         />
       </div>
