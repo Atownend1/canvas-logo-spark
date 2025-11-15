@@ -13,13 +13,14 @@ const Index = () => {
       }}
     >
       {/* Logo */}
-      <div className="relative z-10 animate-fade-in overflow-hidden w-full max-w-5xl mx-auto">
+      <div className="relative z-10 animate-fade-in w-full max-w-5xl mx-auto flex justify-center">
         <img 
           src={axionxLogo} 
           alt="AxionX Logo" 
           className="w-full px-8"
           style={{
-            clipPath: 'inset(0 35% 0 0)'
+            clipPath: 'inset(0 35% 0 0)',
+            transform: 'translateX(-17.5%)'
           }}
         />
       </div>
