@@ -18,11 +18,14 @@ const Index = () => {
       </div>
 
       {/* Logo */}
-      <div className="relative z-10 animate-fade-in">
+      <div className="relative z-10 animate-fade-in overflow-hidden max-w-2xl">
         <img 
           src={axionxLogo} 
           alt="AxionX Logo" 
-          className="w-full max-w-3xl px-8"
+          className="w-full px-8"
+          style={{
+            clipPath: 'inset(0 35% 0 0)'
+          }}
         />
       </div>
     </div>
