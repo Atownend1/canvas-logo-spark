@@ -2,36 +2,21 @@ import heroBackground from "@/assets/hero-background.png";
 import axionxLogo from "@/assets/axionx-logo.png";
 import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
-import { useEffect, useState } from "react";
 
 const Index = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollPosition(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const rippleOffset = scrollPosition * 0.05;
-
   return (
     <>
       <Navigation />
       <ScrollToTop />
       
-      {/* Animated Background Wrapper */}
+      {/* Fixed Background */}
       <div 
-        className="fixed inset-0 -z-10 transition-transform duration-700 ease-out"
+        className="fixed inset-0 -z-10"
         style={{
           backgroundImage: `url(${heroBackground})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          transform: `translateX(${rippleOffset}px)`,
-          filter: `hue-rotate(${scrollPosition * 0.01}deg)`
+          backgroundPosition: 'center bottom',
+          backgroundRepeat: 'no-repeat'
         }}
       />
       
