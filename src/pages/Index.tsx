@@ -2,22 +2,41 @@ import heroBackground from "@/assets/hero-background.png";
 import axionxLogo from "@/assets/axionx-logo.png";
 import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useEffect, useState } from "react";
 
 const Index = () => {
-  const backgroundStyle = {
-    backgroundImage: `url(${heroBackground})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat'
-  };
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollPosition(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const rippleOffset = scrollPosition * 0.05;
 
   return (
     <>
       <Navigation />
       <ScrollToTop />
       
+      {/* Animated Background Wrapper */}
+      <div 
+        className="fixed inset-0 -z-10 transition-transform duration-700 ease-out"
+        style={{
+          backgroundImage: `url(${heroBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          transform: `translateX(${rippleOffset}px)`,
+          filter: `hue-rotate(${scrollPosition * 0.01}deg)`
+        }}
+      />
+      
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative" style={backgroundStyle}>
+      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative">
         {/* Logo */}
         <div className="relative z-10 animate-fade-in w-full max-w-2xl md:max-w-5xl flex justify-center mx-4 md:mx-12 my-8 md:my-12 px-4 md:px-12 py-2 md:py-4">
           <img src={axionxLogo} alt="AxionX Logo" className="w-full md:px-8" style={{
@@ -28,7 +47,7 @@ const Index = () => {
       </section>
 
       {/* Our Story Section */}
-      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20" style={backgroundStyle}>
+      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20">
         <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 mx-6 max-w-4xl">
           <h2 className="text-4xl font-bold text-white mb-6">Our Story</h2>
           <p className="text-white text-lg leading-relaxed">
@@ -38,7 +57,7 @@ const Index = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20 py-20" style={backgroundStyle}>
+      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20 py-20">
         <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 mx-6 max-w-5xl">
           <h2 className="text-4xl font-bold text-white mb-8">Services</h2>
           <div className="space-y-8 text-white">
