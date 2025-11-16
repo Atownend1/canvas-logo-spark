@@ -150,52 +150,57 @@ const Index = () => {
         }}
       />
       
-      {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative">
-        <div className="relative z-10 w-full flex flex-col items-center">
-          {/* Logo */}
-          <div className="animate-fade-in w-full max-w-xl md:max-w-5xl flex justify-center mx-4 md:mx-8 my-6 md:my-12 px-2 md:px-12 py-2 md:py-4">
-            <img src={axionxLogo} alt="AxionX Logo" className="w-full md:px-8" style={{
-              clipPath: 'inset(0 40% 0 0)',
-              transform: 'translateX(40px) translateY(-20px)'
-            }} />
+      {/* Hero Section - iPhone optimized */}
+      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20 sm:pt-0">
+        <div className="relative z-10 w-full flex flex-col items-center px-4 sm:px-6">
+          {/* Logo - Mobile optimized sizing */}
+          <div className="animate-fade-in w-full max-w-[280px] sm:max-w-xl md:max-w-5xl flex justify-center my-8 sm:my-6 md:my-12">
+            <img 
+              src={axionxLogo} 
+              alt="AxionX Logo" 
+              className="w-full md:px-8" 
+              style={{
+                clipPath: 'inset(0 40% 0 0)',
+                transform: 'translateX(40px) translateY(-20px)'
+              }} 
+            />
           </div>
           
-          {/* Hero Content */}
-          <div className="text-center px-4 mt-8">
-            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-6">
+          {/* Hero Content - iPhone optimized typography */}
+          <div className="text-center mt-4 sm:mt-8 max-w-full">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-4 sm:mb-6 px-4 leading-tight">
               Welcome to AxionX
             </h2>
-            <p className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto mb-8">
+            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
               Transforming Data into Intelligence
             </p>
-            <div className="flex flex-col items-center gap-3">
-              <DemoButton variant="default" className="text-lg px-8 py-6" />
+            <div className="flex flex-col items-center gap-3 px-4">
+              <DemoButton variant="default" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 min-h-[56px] w-full max-w-xs touch-manipulation" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative -mt-[100px]">
+      {/* Our Story Section - iPhone optimized */}
+      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative -mt-16 sm:-mt-[100px] py-12 sm:py-0">
         <div 
           ref={storyAnimation.ref}
-          className={`relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-6 md:p-12 mx-4 md:mx-6 max-w-4xl transition-all duration-1000 ${
+          className={`relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-6 md:p-12 mx-4 sm:mx-6 max-w-4xl transition-all duration-1000 ${
             storyAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">Our Story</h2>
-          <p className="text-white text-base md:text-lg leading-relaxed">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight">Our Story</h2>
+          <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
             AxionX isn't just another consultancy - it's a fundamental reimagining of how businesses integrate AI and data into their operations. You're creating a new category that bridges the gap between AI curiosity and practical execution, while simultaneously disrupting the traditional consulting model.
           </p>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative py-12 md:py-20">
+      {/* Services Section - iPhone optimized */}
+      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative py-16 sm:py-12 md:py-20">
         <div 
           ref={servicesAnimation.ref}
-          className={`relative z-10 w-full max-w-2xl mx-4 md:mx-6 space-y-[30px] transition-all duration-1000 delay-200 ${
+          className={`relative z-10 w-full max-w-2xl mx-4 sm:mx-6 space-y-6 sm:space-y-[30px] transition-all duration-1000 delay-200 ${
             servicesAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -210,33 +215,33 @@ const Index = () => {
               }}
             >
               <div 
-                className="relative cursor-pointer group"
+                className="relative cursor-pointer group touch-manipulation active:scale-95 transition-transform"
                 style={{
                   perspective: '1000px',
-                  minHeight: flippedCards[service.id] ? 'auto' : '200px'
+                  minHeight: flippedCards[service.id] ? 'auto' : '180px'
                 }}
                 onClick={() => toggleCard(service.id)}
               >
                 {/* Front - Title */}
                 <div 
-                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-8 md:p-12 min-h-[160px] md:min-h-[200px] flex items-center justify-center transition-all duration-700 hover:bg-white/15 hover:border-white/30 hover:shadow-xl ${
+                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8 md:p-12 min-h-[140px] sm:min-h-[160px] md:min-h-[200px] flex items-center justify-center transition-all duration-700 hover:bg-white/15 hover:border-white/30 hover:shadow-xl ${
                     flippedCards[service.id] ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
                   }`}
                 >
-                  <h2 className="text-2xl md:text-4xl font-bold text-white text-center">{service.title}</h2>
+                  <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white text-center leading-tight px-2">{service.title}</h2>
                 </div>
 
                 {/* Back - Content */}
                 <div 
-                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-6 md:p-8 transition-all duration-700 hover:bg-white/15 hover:border-white/30 ${
+                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-6 md:p-8 transition-all duration-700 hover:bg-white/15 hover:border-white/30 ${
                     flippedCards[service.id] ? 'opacity-100 scale-100' : 'opacity-0 scale-95 absolute inset-0 pointer-events-none'
                   }`}
                 >
-                  <div className="text-white text-xs md:text-sm space-y-3 md:space-y-4">
-                    <p><strong>Purpose:</strong> {service.content.purpose}</p>
-                    <p><strong>Key deliverables:</strong> {service.content.deliverables}</p>
-                    <p><strong>Outcome:</strong> {service.content.outcome}</p>
-                    <p><strong>Value:</strong> {service.content.value}</p>
+                  <div className="text-white text-xs sm:text-sm space-y-3 sm:space-y-4">
+                    <p className="leading-relaxed"><strong className="font-semibold">Purpose:</strong> {service.content.purpose}</p>
+                    <p className="leading-relaxed"><strong className="font-semibold">Key deliverables:</strong> {service.content.deliverables}</p>
+                    <p className="leading-relaxed"><strong className="font-semibold">Outcome:</strong> {service.content.outcome}</p>
+                    <p className="leading-relaxed"><strong className="font-semibold">Value:</strong> {service.content.value}</p>
                   </div>
                 </div>
               </div>
@@ -245,36 +250,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-10 py-10 md:py-20">
+      {/* Contact Section - iPhone optimized */}
+      <section id="contact" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-16 pb-10 sm:pt-10 sm:py-10 md:py-20">
         <div 
           ref={contactAnimation.ref}
-          className={`relative z-10 w-full max-w-2xl mx-4 md:mx-6 transition-all duration-1000 delay-300 ${
+          className={`relative z-10 w-full max-w-2xl mx-4 sm:mx-6 transition-all duration-1000 delay-300 ${
             contactAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-6 md:p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4">Start Your Journey</h2>
-            <p className="text-white text-xs md:text-sm mb-6 md:mb-8">
+          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-6 md:p-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-3 md:mb-4 leading-tight">Start Your Journey</h2>
+            <p className="text-white text-sm sm:text-xs md:text-sm mb-6 sm:mb-6 md:mb-8 leading-relaxed">
               Ready to transform your business with AI and data? Let's talk.
             </p>
             
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 text-left">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6 text-left">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Name *</FormLabel>
+                      <FormLabel className="text-white text-sm sm:text-base">Name *</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Your name" 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[48px] text-base"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300" />
+                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
                     </FormItem>
                   )}
                 />
@@ -284,16 +289,16 @@ const Index = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Email *</FormLabel>
+                      <FormLabel className="text-white text-sm sm:text-base">Email *</FormLabel>
                       <FormControl>
                         <Input 
                           type="email"
                           placeholder="your@email.com" 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[48px] text-base"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300" />
+                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
                     </FormItem>
                   )}
                 />
@@ -303,15 +308,15 @@ const Index = () => {
                   name="company"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Company</FormLabel>
+                      <FormLabel className="text-white text-sm sm:text-base">Company</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Your company" 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[48px] text-base"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300" />
+                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
                     </FormItem>
                   )}
                 />
@@ -321,22 +326,22 @@ const Index = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white">Message *</FormLabel>
+                      <FormLabel className="text-white text-sm sm:text-base">Message *</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Tell us about your data and AI needs..." 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[120px]"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[140px] text-base resize-none"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300" />
+                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
                     </FormItem>
                   )}
                 />
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-lg min-h-[52px] text-base font-semibold touch-manipulation"
                 >
                   Send Message
                 </Button>
