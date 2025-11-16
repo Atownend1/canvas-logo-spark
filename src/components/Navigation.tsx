@@ -28,7 +28,7 @@ const Navigation = () => {
 
           {/* Right: Services Button */}
           <Button
-            onClick={() => scrollToSection('services')}
+            onClick={() => scrollToSection('service-1')}
             className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300"
             variant="outline"
           >
