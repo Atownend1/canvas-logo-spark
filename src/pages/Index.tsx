@@ -159,40 +159,40 @@ const Index = () => {
           {services.map((service) => (
             <div
               key={service.id}
-              className={`transition-opacity duration-500 ${
+              className={`transition-all duration-500 ${
                 activeCard && activeCard !== service.id.toString() ? 'opacity-30' : 'opacity-100'
               }`}
             >
               <div 
-                className="cursor-pointer transition-all duration-700 transform-gpu"
+                className="relative cursor-pointer"
                 style={{
-                  transformStyle: 'preserve-3d',
-                  transform: flippedCards[service.id] ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                  perspective: '1000px',
+                  minHeight: flippedCards[service.id] ? 'auto' : '200px'
                 }}
                 onClick={() => toggleCard(service.id)}
               >
                 {/* Front - Title */}
                 <div 
-                  className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 min-h-[200px] flex items-center justify-center"
-                  style={{ backfaceVisibility: 'hidden' }}
+                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 min-h-[200px] flex items-center justify-center transition-all duration-700 ${
+                    flippedCards[service.id] ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
+                  }`}
                 >
                   <h2 className="text-4xl font-bold text-white">{service.title}</h2>
                 </div>
 
                 {/* Back - Content */}
-                {flippedCards[service.id] && (
-                  <div 
-                    className="absolute inset-0 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-8"
-                    style={{ transform: 'rotateY(180deg)', backfaceVisibility: 'hidden' }}
-                  >
-                    <div className="text-white text-sm space-y-3 max-h-[350px] overflow-auto">
-                      <p><strong>Purpose:</strong> {service.content.purpose}</p>
-                      <p><strong>Key deliverables:</strong> {service.content.deliverables}</p>
-                      <p><strong>Outcome:</strong> {service.content.outcome}</p>
-                      <p><strong>Value:</strong> {service.content.value}</p>
-                    </div>
+                <div 
+                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-8 transition-all duration-700 ${
+                    flippedCards[service.id] ? 'opacity-100 scale-100' : 'opacity-0 scale-95 absolute inset-0 pointer-events-none'
+                  }`}
+                >
+                  <div className="text-white text-sm space-y-4">
+                    <p><strong>Purpose:</strong> {service.content.purpose}</p>
+                    <p><strong>Key deliverables:</strong> {service.content.deliverables}</p>
+                    <p><strong>Outcome:</strong> {service.content.outcome}</p>
+                    <p><strong>Value:</strong> {service.content.value}</p>
                   </div>
-                )}
+                </div>
               </div>
             </div>
           ))}
