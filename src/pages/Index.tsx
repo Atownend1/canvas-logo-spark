@@ -4,9 +4,60 @@ import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  company: z.string().trim().max(100, "Company name must be less than 100 characters").optional(),
+  message: z.string().trim().min(1, "Message is required").max(1000, "Message must be less than 1000 characters"),
+});
 
 const Index = () => {
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
+  const { toast } = useToast();
+
+  const form = useForm<z.infer<typeof contactSchema>>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (values: z.infer<typeof contactSchema>) => {
+    try {
+      // Here you would typically send the data to your backend
+      // For now, we'll just show a success message
+      toast({
+        title: "Message sent!",
+        description: "We'll get back to you as soon as possible.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const toggleCard = (index: number) => {
     setFlippedCards(prev => ({ ...prev, [index]: !prev[index] }));
@@ -274,7 +325,7 @@ const Index = () => {
                   <p><strong>Value:</strong> Recurring revenue enabling land-and-expand</p>
                 </div>
                 <div 
-                  onClick={(e) => { e.stopPropagation(); scrollToHome(); }}
+                  onClick={(e) => { e.stopPropagation(); scrollToNext('contact'); }}
                   className="mt-6 cursor-pointer inline-flex items-center justify-center"
                 >
                   <ChevronDown className="w-8 h-8 text-white animate-bounce" />
@@ -329,6 +380,102 @@ const Index = () => {
             <p><strong>Key deliverables:</strong> Agentic support and upgrades, Data performance optimisation agents, AaaS staff augmentation, AI agent evolution, Roadmap adaptation, Embedded advisor</p>
             <p><strong>Outcome:</strong> Alignment between finance, systems, and strategy</p>
             <p><strong>Value:</strong> Recurring revenue enabling land-and-expand</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20 py-20">
+        <div className="relative z-10 w-full max-w-2xl mx-6">
+          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 text-center">
+            <h2 className="text-4xl font-bold text-white mb-4">Start Your Journey</h2>
+            <p className="text-white text-sm mb-8">
+              Ready to transform your business with AI and data? Let's talk.
+            </p>
+            
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 text-left">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Name *</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your name" 
+                          {...field} 
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-300" />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Email *</FormLabel>
+                      <FormControl>
+                        <Input 
+                          type="email"
+                          placeholder="your@email.com" 
+                          {...field} 
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-300" />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="company"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Company</FormLabel>
+                      <FormControl>
+                        <Input 
+                          placeholder="Your company" 
+                          {...field} 
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-300" />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-white">Message *</FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          placeholder="Tell us about your data and AI needs..." 
+                          {...field} 
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[120px]"
+                        />
+                      </FormControl>
+                      <FormMessage className="text-red-300" />
+                    </FormItem>
+                  )}
+                />
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                >
+                  Send Message
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
       </section>
