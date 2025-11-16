@@ -2,6 +2,7 @@ import heroBackground from "@/assets/hero-background.png";
 import axionxLogo from "@/assets/axionx-logo.png";
 import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
+import { DemoButton, InvestorQuickAccess } from "@/components/DemoButton";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -151,12 +152,28 @@ const Index = () => {
       
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative">
-        {/* Logo */}
-        <div className="relative z-10 animate-fade-in w-full max-w-xl md:max-w-5xl flex justify-center mx-4 md:mx-8 my-6 md:my-12 px-2 md:px-12 py-2 md:py-4">
-          <img src={axionxLogo} alt="AxionX Logo" className="w-full md:px-8" style={{
-            clipPath: 'inset(0 40% 0 0)',
-            transform: 'translateX(40px) translateY(-20px)'
-          }} />
+        <div className="relative z-10 w-full flex flex-col items-center">
+          {/* Logo */}
+          <div className="animate-fade-in w-full max-w-xl md:max-w-5xl flex justify-center mx-4 md:mx-8 my-6 md:my-12 px-2 md:px-12 py-2 md:py-4">
+            <img src={axionxLogo} alt="AxionX Logo" className="w-full md:px-8" style={{
+              clipPath: 'inset(0 40% 0 0)',
+              transform: 'translateX(40px) translateY(-20px)'
+            }} />
+          </div>
+          
+          {/* Hero Content */}
+          <div className="text-center px-4 mt-8">
+            <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-6">
+              Welcome to AxionX
+            </h2>
+            <p className="text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto mb-8">
+              Transforming Data into Intelligence
+            </p>
+            <div className="flex flex-col items-center gap-3">
+              <DemoButton variant="secondary" className="text-lg px-8 py-6" />
+              <InvestorQuickAccess />
+            </div>
+          </div>
         </div>
       </section>
 
