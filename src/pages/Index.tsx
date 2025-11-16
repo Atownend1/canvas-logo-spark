@@ -116,7 +116,7 @@ const Index = () => {
       </section>
 
       {/* Our Story Section */}
-      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20">
+      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative -mt-[100px]">
         <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 mx-6 max-w-4xl">
           <h2 className="text-4xl font-bold text-white mb-6">Our Story</h2>
           <p className="text-white text-lg leading-relaxed">
@@ -126,8 +126,8 @@ const Index = () => {
       </section>
 
       {/* Service 1 */}
-      <section id="service-1" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-10 py-10">
-        <div className="relative z-10 w-full max-w-2xl mx-6 text-center">
+      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-10 py-10">
+        <div id="service-1" className="relative z-10 w-full max-w-2xl mx-6 text-center">
           <div 
             className="cursor-pointer transition-all duration-700 transform-gpu"
             style={{
