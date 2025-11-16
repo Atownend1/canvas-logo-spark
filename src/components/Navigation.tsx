@@ -15,21 +15,21 @@ const Navigation = () => {
           {/* Left: Our Story Button */}
           <Button
             onClick={() => scrollToSection('our-story')}
-            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-foreground shadow-lg transition-all duration-300"
+            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300"
             variant="outline"
           >
             Our Story
           </Button>
 
           {/* Center: AI Readiness Report Text */}
-          <div className="hidden md:block text-foreground font-medium text-sm tracking-wider">
+          <div className="hidden md:block text-white font-medium text-sm tracking-wider">
             AI READINESS REPORT
           </div>
 
           {/* Right: Services Button */}
           <Button
             onClick={() => scrollToSection('services')}
-            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-foreground shadow-lg transition-all duration-300"
+            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300"
             variant="outline"
           >
             Services
