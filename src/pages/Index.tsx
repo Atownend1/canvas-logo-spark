@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -29,6 +30,10 @@ const contactSchema = z.object({
 const Index = () => {
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
   const { toast } = useToast();
+  
+  const storyAnimation = useScrollAnimation();
+  const servicesAnimation = useScrollAnimation();
+  const contactAnimation = useScrollAnimation();
 
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -135,7 +140,7 @@ const Index = () => {
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative">
         {/* Logo */}
-        <div className="relative z-10 animate-fade-in w-full max-w-2xl md:max-w-5xl flex justify-center mx-4 md:mx-12 my-8 md:my-12 px-4 md:px-12 py-2 md:py-4">
+        <div className="relative z-10 animate-fade-in w-full max-w-xl md:max-w-5xl flex justify-center mx-4 md:mx-8 my-6 md:my-12 px-2 md:px-12 py-2 md:py-4">
           <img src={axionxLogo} alt="AxionX Logo" className="w-full md:px-8" style={{
             clipPath: 'inset(0 40% 0 0)',
             transform: 'translateX(40px) translateY(-20px)'
@@ -145,26 +150,39 @@ const Index = () => {
 
       {/* Our Story Section */}
       <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative -mt-[100px]">
-        <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 mx-6 max-w-4xl">
-          <h2 className="text-4xl font-bold text-white mb-6">Our Story</h2>
-          <p className="text-white text-lg leading-relaxed">
+        <div 
+          ref={storyAnimation.ref}
+          className={`relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-6 md:p-12 mx-4 md:mx-6 max-w-4xl transition-all duration-1000 ${
+            storyAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">Our Story</h2>
+          <p className="text-white text-base md:text-lg leading-relaxed">
             AxionX isn't just another consultancy - it's a fundamental reimagining of how businesses integrate AI and data into their operations. You're creating a new category that bridges the gap between AI curiosity and practical execution, while simultaneously disrupting the traditional consulting model.
           </p>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative py-20">
-        <div className="relative z-10 w-full max-w-2xl mx-6 space-y-[30px]">
-          {services.map((service) => (
+      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative py-12 md:py-20">
+        <div 
+          ref={servicesAnimation.ref}
+          className={`relative z-10 w-full max-w-2xl mx-4 md:mx-6 space-y-[30px] transition-all duration-1000 delay-200 ${
+            servicesAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {services.map((service, index) => (
             <div
               key={service.id}
               className={`transition-all duration-500 ${
-                activeCard && activeCard !== service.id.toString() ? 'opacity-30' : 'opacity-100'
+                activeCard && activeCard !== service.id.toString() ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
               }`}
+              style={{
+                transitionDelay: servicesAnimation.isVisible ? `${index * 100}ms` : '0ms'
+              }}
             >
               <div 
-                className="relative cursor-pointer"
+                className="relative cursor-pointer group"
                 style={{
                   perspective: '1000px',
                   minHeight: flippedCards[service.id] ? 'auto' : '200px'
@@ -173,20 +191,20 @@ const Index = () => {
               >
                 {/* Front - Title */}
                 <div 
-                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 min-h-[200px] flex items-center justify-center transition-all duration-700 ${
+                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-8 md:p-12 min-h-[160px] md:min-h-[200px] flex items-center justify-center transition-all duration-700 hover:bg-white/15 hover:border-white/30 hover:shadow-xl ${
                     flippedCards[service.id] ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
                   }`}
                 >
-                  <h2 className="text-4xl font-bold text-white">{service.title}</h2>
+                  <h2 className="text-2xl md:text-4xl font-bold text-white text-center">{service.title}</h2>
                 </div>
 
                 {/* Back - Content */}
                 <div 
-                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-8 transition-all duration-700 ${
+                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-6 md:p-8 transition-all duration-700 hover:bg-white/15 hover:border-white/30 ${
                     flippedCards[service.id] ? 'opacity-100 scale-100' : 'opacity-0 scale-95 absolute inset-0 pointer-events-none'
                   }`}
                 >
-                  <div className="text-white text-sm space-y-4">
+                  <div className="text-white text-xs md:text-sm space-y-3 md:space-y-4">
                     <p><strong>Purpose:</strong> {service.content.purpose}</p>
                     <p><strong>Key deliverables:</strong> {service.content.deliverables}</p>
                     <p><strong>Outcome:</strong> {service.content.outcome}</p>
@@ -200,11 +218,16 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-10 py-10">
-        <div className="relative z-10 w-full max-w-2xl mx-6">
-          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 text-center">
-            <h2 className="text-4xl font-bold text-white mb-4">Start Your Journey</h2>
-            <p className="text-white text-sm mb-8">
+      <section id="contact" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-10 py-10 md:py-20">
+        <div 
+          ref={contactAnimation.ref}
+          className={`relative z-10 w-full max-w-2xl mx-4 md:mx-6 transition-all duration-1000 delay-300 ${
+            contactAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-6 md:p-12 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4">Start Your Journey</h2>
+            <p className="text-white text-xs md:text-sm mb-6 md:mb-8">
               Ready to transform your business with AI and data? Let's talk.
             </p>
             
@@ -285,7 +308,7 @@ const Index = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   Send Message
                 </Button>
