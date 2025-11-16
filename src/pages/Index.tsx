@@ -7,9 +7,8 @@ const Index = () => {
   const backgroundStyle = {
     backgroundImage: `url(${heroBackground})`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center calc(50% - 60px)',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed'
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat'
   };
 
   return (
