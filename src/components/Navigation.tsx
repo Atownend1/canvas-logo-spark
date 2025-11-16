@@ -22,7 +22,7 @@ const Navigation = () => {
           </Button>
 
           {/* Center: AI Readiness Report Text */}
-          <div className="hidden md:block text-white font-medium text-sm tracking-wider">
+          <div className="hidden md:block text-white font-medium text-sm tracking-wider cursor-pointer" onClick={() => scrollToSection('contact')}>
             AI READINESS REPORT
           </div>
 
