@@ -23,7 +23,7 @@ export function DemoButton({ variant = 'default', className = '' }: DemoButtonPr
     <Button
       onClick={handleClick}
       variant={variant}
-      className={className}
+      className={`${className} touch-manipulation active:scale-95 transition-transform`}
     >
       Experience DataController Demo →
     </Button>

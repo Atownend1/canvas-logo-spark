@@ -95,10 +95,20 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    /* Optimize for iPhone rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   body {
     @apply bg-background text-foreground font-opensans;
+    /* Prevent text size adjustment on iPhone */
+    -webkit-text-size-adjust: 100%;
+    /* Handle iPhone notch/Dynamic Island safely */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    /* Smooth scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -121,5 +131,33 @@ All colors MUST be HSL.
     filter: blur(40px);
     transform-origin: top center;
     opacity: 0;
+  }
+
+  /* iPhone-specific optimizations */
+  .safe-top {
+    padding-top: max(env(safe-area-inset-top), 1rem);
+  }
+
+  /* Optimize touch targets for iPhone */
+  button, a, [role="button"] {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
+  }
+
+  /* Prevent zoom on input focus (iPhone) */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Smooth momentum scrolling on iPhone */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optimize background images for mobile */
+  @media (max-width: 768px) {
+    section {
+      background-attachment: scroll !important;
+    }
   }
 }

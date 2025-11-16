@@ -9,29 +9,29 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20 shadow-lg">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Left: Services Button */}
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20 shadow-lg safe-top">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div className="flex items-center justify-between gap-2 sm:gap-4">
+          {/* Left: Services Button - Mobile optimized */}
           <Button
             onClick={() => scrollToSection('services')}
-            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300"
+            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300 min-h-[44px] min-w-[44px] px-4 sm:px-6 text-sm sm:text-base touch-manipulation"
             variant="outline"
           >
             Services
           </Button>
 
-          {/* Center: Contact Button */}
+          {/* Center: Contact Button - Mobile optimized */}
           <Button
             onClick={() => scrollToSection('contact')}
-            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300"
+            className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300 min-h-[44px] min-w-[44px] px-4 sm:px-6 text-sm sm:text-base touch-manipulation"
             variant="outline"
           >
             Contact
           </Button>
 
-          {/* Right: AI Readiness Report Text */}
-          <div className="hidden md:block text-white font-medium text-sm tracking-wider cursor-pointer" onClick={() => scrollToSection('contact')}>
+          {/* Right: AI Readiness Report Text - Hidden on mobile, shows on tablet+ */}
+          <div className="hidden lg:block text-white font-medium text-xs sm:text-sm tracking-wider cursor-pointer touch-manipulation active:opacity-70" onClick={() => scrollToSection('contact')}>
             AI READINESS REPORT
           </div>
         </div>
