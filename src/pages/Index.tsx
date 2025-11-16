@@ -20,10 +20,10 @@ const Index = () => {
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative" style={backgroundStyle}>
         {/* Logo */}
-        <div className="relative z-10 animate-fade-in w-full max-w-5xl flex justify-center mx-[50px] my-[50px] px-[50px] py-[10px]">
-          <img src={axionxLogo} alt="AxionX Logo" className="w-full px-8" style={{
-            clipPath: 'inset(0 35% 0 0)',
-            transform: 'translateX(80px) translateY(-50px)'
+        <div className="relative z-10 animate-fade-in w-full max-w-2xl md:max-w-5xl flex justify-center mx-4 md:mx-12 my-8 md:my-12 px-4 md:px-12 py-2 md:py-4">
+          <img src={axionxLogo} alt="AxionX Logo" className="w-full md:px-8" style={{
+            clipPath: 'inset(0 20% 0 0)',
+            transform: 'translateX(20px) translateY(-20px)'
           }} />
         </div>
       </section>
