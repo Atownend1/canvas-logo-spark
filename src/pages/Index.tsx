@@ -22,8 +22,8 @@ const Index = () => {
         {/* Logo */}
         <div className="relative z-10 animate-fade-in w-full max-w-2xl md:max-w-5xl flex justify-center mx-4 md:mx-12 my-8 md:my-12 px-4 md:px-12 py-2 md:py-4">
           <img src={axionxLogo} alt="AxionX Logo" className="w-full md:px-8" style={{
-            clipPath: 'inset(0 20% 0 0)',
-            transform: 'translateX(20px) translateY(-20px)'
+            clipPath: 'inset(0 40% 0 0)',
+            transform: 'translateX(40px) translateY(-20px)'
           }} />
         </div>
       </section>
