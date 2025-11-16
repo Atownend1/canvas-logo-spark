@@ -3,7 +3,7 @@ import axionxLogo from "@/assets/axionx-logo.png";
 import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 const Index = () => {
   const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
@@ -18,10 +18,25 @@ const Index = () => {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const scrollToHome = () => {
+    const element = document.getElementById('hero');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <>
       <Navigation />
       <ScrollToTop />
+      
+      {/* Up Arrow to Home */}
+      <div 
+        onClick={scrollToHome}
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-50 cursor-pointer backdrop-blur-lg bg-white/10 border border-white/20 rounded-full p-3 hover:bg-white/20 transition-all duration-300 shadow-lg"
+      >
+        <ChevronUp className="w-6 h-6 text-white" />
+      </div>
       
       {/* Fixed Background */}
       <div 
@@ -71,9 +86,6 @@ const Index = () => {
               className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-xl">1</div>
-              </div>
               <h2 className="text-4xl font-bold text-white">AI Readiness Advisory</h2>
             </div>
 
@@ -89,12 +101,12 @@ const Index = () => {
                   <p><strong>Outcome:</strong> Clear transformation pathway with executive confidence</p>
                   <p><strong>Value:</strong> Entry point that creates demand and establishes buy-in and budget</p>
                 </div>
-                <Button 
+                <div 
                   onClick={(e) => { e.stopPropagation(); scrollToNext('service-2'); }}
-                  className="mt-6 bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                  className="mt-6 cursor-pointer inline-flex items-center justify-center"
                 >
-                  Our next service takes this value →
-                </Button>
+                  <ChevronDown className="w-8 h-8 text-white animate-bounce" />
+                </div>
               </div>
             )}
           </div>
@@ -117,9 +129,6 @@ const Index = () => {
               className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-xl">2</div>
-              </div>
               <h2 className="text-4xl font-bold text-white">Platform Implementation</h2>
             </div>
 
@@ -135,12 +144,12 @@ const Index = () => {
                   <p><strong>Outcome:</strong> Modern finance infrastructure with clean data</p>
                   <p><strong>Value:</strong> Revenue engine that builds the technical foundation for AI and surfaces data issues</p>
                 </div>
-                <Button 
+                <div 
                   onClick={(e) => { e.stopPropagation(); scrollToNext('service-3'); }}
-                  className="mt-6 bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                  className="mt-6 cursor-pointer inline-flex items-center justify-center"
                 >
-                  Our next service takes this value →
-                </Button>
+                  <ChevronDown className="w-8 h-8 text-white animate-bounce" />
+                </div>
               </div>
             )}
           </div>
@@ -163,9 +172,6 @@ const Index = () => {
               className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-xl">3</div>
-              </div>
               <h2 className="text-4xl font-bold text-white">Data Enablement</h2>
             </div>
 
@@ -181,12 +187,12 @@ const Index = () => {
                   <p><strong>Outcome:</strong> Future-proof foundation enabling AI and preventing decay</p>
                   <p><strong>Value:</strong> Critical bridge between platform and AI</p>
                 </div>
-                <Button 
+                <div 
                   onClick={(e) => { e.stopPropagation(); scrollToNext('service-4'); }}
-                  className="mt-6 bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                  className="mt-6 cursor-pointer inline-flex items-center justify-center"
                 >
-                  Our next service takes this value →
-                </Button>
+                  <ChevronDown className="w-8 h-8 text-white animate-bounce" />
+                </div>
               </div>
             )}
           </div>
@@ -209,9 +215,6 @@ const Index = () => {
               className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-xl">4</div>
-              </div>
               <h2 className="text-4xl font-bold text-white">AI Governance</h2>
             </div>
 
@@ -227,12 +230,12 @@ const Index = () => {
                   <p><strong>Outcome:</strong> Assurance and optimisation without manual effort</p>
                   <p><strong>Value:</strong> Value multiplier that extends ROI and supports recurring revenue</p>
                 </div>
-                <Button 
+                <div 
                   onClick={(e) => { e.stopPropagation(); scrollToNext('service-5'); }}
-                  className="mt-6 bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                  className="mt-6 cursor-pointer inline-flex items-center justify-center"
                 >
-                  Our next service takes this value →
-                </Button>
+                  <ChevronDown className="w-8 h-8 text-white animate-bounce" />
+                </div>
               </div>
             )}
           </div>
@@ -255,9 +258,6 @@ const Index = () => {
               className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12"
               style={{ backfaceVisibility: 'hidden' }}
             >
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-xl">5</div>
-              </div>
               <h2 className="text-4xl font-bold text-white">Transformation Service</h2>
             </div>
 
@@ -273,12 +273,12 @@ const Index = () => {
                   <p><strong>Outcome:</strong> Alignment between finance, systems, and strategy</p>
                   <p><strong>Value:</strong> Recurring revenue enabling land-and-expand</p>
                 </div>
-                <Button 
-                  onClick={(e) => { e.stopPropagation(); scrollToNext('hero'); }}
-                  className="mt-6 bg-white/20 hover:bg-white/30 text-white border border-white/30"
+                <div 
+                  onClick={(e) => { e.stopPropagation(); scrollToHome(); }}
+                  className="mt-6 cursor-pointer inline-flex items-center justify-center"
                 >
-                  Start your journey →
-                </Button>
+                  <ChevronDown className="w-8 h-8 text-white animate-bounce" />
+                </div>
               </div>
             )}
           </div>
