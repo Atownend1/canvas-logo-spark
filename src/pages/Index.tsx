@@ -2,7 +2,7 @@ import heroBackground from "@/assets/hero-background.png";
 import axionxLogo from "@/assets/axionx-logo.png";
 import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
-import { DemoButton, InvestorQuickAccess } from "@/components/DemoButton";
+import { DemoButton } from "@/components/DemoButton";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -170,8 +170,7 @@ const Index = () => {
               Transforming Data into Intelligence
             </p>
             <div className="flex flex-col items-center gap-3">
-              <DemoButton variant="secondary" className="text-lg px-8 py-6" />
-              <InvestorQuickAccess />
+              <DemoButton variant="default" className="text-lg px-8 py-6" />
             </div>
           </div>
         </div>
