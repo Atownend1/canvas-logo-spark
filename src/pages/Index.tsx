@@ -31,8 +31,8 @@ const Index = () => {
       {/* Our Story Section */}
       <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20" style={backgroundStyle}>
         <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 mx-6 max-w-4xl">
-          <h2 className="text-4xl font-bold text-foreground mb-6">Our Story</h2>
-          <p className="text-foreground text-lg leading-relaxed">
+          <h2 className="text-4xl font-bold text-white mb-6">Our Story</h2>
+          <p className="text-white text-lg leading-relaxed">
             AxionX isn't just another consultancy - it's a fundamental reimagining of how businesses integrate AI and data into their operations. You're creating a new category that bridges the gap between AI curiosity and practical execution, while simultaneously disrupting the traditional consulting model.
           </p>
         </div>
@@ -41,10 +41,10 @@ const Index = () => {
       {/* Services Section */}
       <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20 py-20" style={backgroundStyle}>
         <div className="relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-lg p-12 mx-6 max-w-5xl">
-          <h2 className="text-4xl font-bold text-foreground mb-8">Services</h2>
-          <div className="space-y-8 text-foreground">
+          <h2 className="text-4xl font-bold text-white mb-8">Services</h2>
+          <div className="space-y-8 text-white">
             <div>
-              <h3 className="text-2xl font-semibold mb-3">1. Data & AI Readiness Advisory</h3>
+              <h3 className="text-2xl font-semibold mb-3">Data & AI Readiness Advisory</h3>
               <p className="mb-2"><strong>Purpose:</strong> Assurance that outcomes are achievable with an accurate forecast of milestone risks</p>
               <p className="mb-2"><strong>Key deliverables:</strong> Data Quality Assessment, Risk & Opportunity Heatmap, AI Adoption Roadmap, Business Case with ROI</p>
               <p className="mb-2"><strong>Outcome:</strong> Clear transformation pathway with executive confidence</p>
@@ -52,7 +52,7 @@ const Index = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-3">2. ERP, EPM & Data Warehouse Implementation</h3>
+              <h3 className="text-2xl font-semibold mb-3">ERP, EPM & Data Warehouse Implementation</h3>
               <p className="mb-2"><strong>Purpose:</strong> De-risked transformation, accurately budgeted, aligned to actual data maturity</p>
               <p className="mb-2"><strong>Key deliverables:</strong> EPM implementation, Data Warehouse & Analytics, CoA rationalisation, Governance reporting</p>
               <p className="mb-2"><strong>Outcome:</strong> Modern finance infrastructure with clean data</p>
@@ -60,7 +60,7 @@ const Index = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-3">3. Data Enablement Layer</h3>
+              <h3 className="text-2xl font-semibold mb-3">Data Enablement Layer</h3>
               <p className="mb-2"><strong>Purpose:</strong> AI platform that automates validation and reconciliation to save time, cost, and risk while exposing quick wins</p>
               <p className="mb-2"><strong>Key deliverables:</strong> Source system mapping, Reconciliation framework, Master data management, Data model architecture</p>
               <p className="mb-2"><strong>Outcome:</strong> Future-proof foundation enabling AI and preventing decay</p>
@@ -68,7 +68,7 @@ const Index = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-3">4. AI Automation & Governance</h3>
+              <h3 className="text-2xl font-semibold mb-3">AI Automation & Governance</h3>
               <p className="mb-2"><strong>Purpose:</strong> Ongoing monitoring and maintenance that prevents accuracy decay and protects the investment</p>
               <p className="mb-2"><strong>Key deliverables:</strong> Agentic AI for data governance, Pattern recognition, Workflow nudges, Data quality scoring</p>
               <p className="mb-2"><strong>Outcome:</strong> Assurance and optimisation without manual effort</p>
@@ -76,7 +76,7 @@ const Index = () => {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-3">5. Transformation-as-a-Service</h3>
+              <h3 className="text-2xl font-semibold mb-3">Transformation-as-a-Service</h3>
               <p className="mb-2"><strong>Purpose:</strong> "AxionX Momentum" identifies revenue opportunities in data, producing monthly use-case reports humans miss</p>
               <p className="mb-2"><strong>Key deliverables:</strong> Agentic support and upgrades, Data performance optimisation agents, AaaS staff augmentation, AI agent evolution, Roadmap adaptation, Embedded advisor</p>
               <p className="mb-2"><strong>Outcome:</strong> Alignment between finance, systems, and strategy</p>

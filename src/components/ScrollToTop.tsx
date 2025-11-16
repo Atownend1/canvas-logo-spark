@@ -32,7 +32,7 @@ const ScrollToTop = () => {
       }`}
       aria-label="Scroll to top"
     >
-      <ChevronUp className="w-6 h-6 text-foreground" />
+      <ChevronUp className="w-6 h-6 text-white" />
     </button>
   );
 };
