@@ -26,13 +26,13 @@ const Navigation = () => {
             AI READINESS REPORT
           </div>
 
-          {/* Right: Services Button */}
+          {/* Right: Contact Button */}
           <Button
-            onClick={() => scrollToSection('service-1')}
+            onClick={() => scrollToSection('contact')}
             className="rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300"
             variant="outline"
           >
-            Services
+            Contact
           </Button>
         </div>
       </div>
