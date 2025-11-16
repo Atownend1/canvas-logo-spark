@@ -15,19 +15,18 @@ interface DemoButtonProps {
 }
 
 export function DemoButton({ variant = 'default', className = '' }: DemoButtonProps) {
-  const [showModal, setShowModal] = useState(false);
+  const handleClick = () => {
+    window.location.href = 'https://axionx-demo-showcase.lovable.app';
+  };
 
   return (
-    <>
-      <Button
-        onClick={() => setShowModal(true)}
-        variant={variant}
-        className={className}
-      >
-        Experience DataController Demo →
-      </Button>
-      {showModal && <DemoRequestModal onClose={() => setShowModal(false)} />}
-    </>
+    <Button
+      onClick={handleClick}
+      variant={variant}
+      className={className}
+    >
+      Experience DataController Demo →
+    </Button>
   );
 }
 
