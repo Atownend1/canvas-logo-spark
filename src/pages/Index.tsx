@@ -102,6 +102,18 @@ const Index = () => {
 
   const onSubmit = async (values: z.infer<typeof contactSchema>) => {
     try {
+      const response = await fetch("https://formspree.io/f/mldodjpe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send message");
+      }
+
       toast({
         title: "Message sent!",
         description: "We'll get back to you as soon as possible.",
