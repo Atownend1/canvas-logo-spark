@@ -3,7 +3,7 @@ import axionxLogo from "@/assets/axionx-logo.png";
 import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
 import { DemoButton } from "@/components/DemoButton";
-import { useState } from "react";
+import { ServiceCard } from "@/components/ServiceCard";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -29,7 +29,6 @@ const contactSchema = z.object({
 });
 
 const Index = () => {
-  const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
   const { toast } = useToast();
   
   const storyAnimation = useScrollAnimation();
@@ -99,8 +98,6 @@ const Index = () => {
     }
   ];
 
-  const activeCard = Object.keys(flippedCards).find(key => flippedCards[parseInt(key)]);
-
   const onSubmit = async (values: z.infer<typeof contactSchema>) => {
     try {
       const response = await fetch("https://formspree.io/f/mldodjpe", {
@@ -127,10 +124,6 @@ const Index = () => {
         variant: "destructive",
       });
     }
-  };
-
-  const toggleCard = (index: number) => {
-    setFlippedCards(prev => ({ ...prev, [index]: !prev[index] }));
   };
 
 
@@ -197,55 +190,20 @@ const Index = () => {
       </section>
 
       {/* Services Section - iPhone optimized */}
-      <section id="services" className="min-h-screen flex items-center justify-center overflow-hidden relative py-16 sm:py-12 md:py-20">
+      <section id="services" className="relative overflow-hidden py-20 sm:py-24 md:py-32">
         <div 
           ref={servicesAnimation.ref}
-          className={`relative z-10 w-full max-w-2xl mx-4 sm:mx-6 space-y-6 sm:space-y-[30px] transition-all duration-1000 delay-200 ${
+          className={`relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10 md:space-y-12 transition-all duration-1000 delay-200 ${
             servicesAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
           {services.map((service, index) => (
-            <div
+            <ServiceCard
               key={service.id}
-              className={`transition-all duration-500 ${
-                activeCard && activeCard !== service.id.toString() ? 'opacity-30 scale-95' : 'opacity-100 scale-100'
-              }`}
-              style={{
-                transitionDelay: servicesAnimation.isVisible ? `${index * 100}ms` : '0ms'
-              }}
-            >
-              <div 
-                className="relative cursor-pointer group touch-manipulation active:scale-95 transition-transform"
-                style={{
-                  perspective: '1000px',
-                  minHeight: flippedCards[service.id] ? 'auto' : '180px'
-                }}
-                onClick={() => toggleCard(service.id)}
-              >
-                {/* Front - Title */}
-                <div 
-                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-6 sm:p-8 md:p-12 min-h-[140px] sm:min-h-[160px] md:min-h-[200px] flex items-center justify-center transition-all duration-700 hover:bg-white/15 hover:border-white/30 hover:shadow-xl ${
-                    flippedCards[service.id] ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'
-                  }`}
-                >
-                  <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white text-center leading-tight px-2">{service.title}</h2>
-                </div>
-
-                {/* Back - Content */}
-                <div 
-                  className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-6 md:p-8 transition-all duration-700 hover:bg-white/15 hover:border-white/30 ${
-                    flippedCards[service.id] ? 'opacity-100 scale-100' : 'opacity-0 scale-95 absolute inset-0 pointer-events-none'
-                  }`}
-                >
-                  <div className="text-white text-xs sm:text-sm space-y-3 sm:space-y-4">
-                    <p className="leading-relaxed"><strong className="font-semibold">Purpose:</strong> {service.content.purpose}</p>
-                    <p className="leading-relaxed"><strong className="font-semibold">Key deliverables:</strong> {service.content.deliverables}</p>
-                    <p className="leading-relaxed"><strong className="font-semibold">Outcome:</strong> {service.content.outcome}</p>
-                    <p className="leading-relaxed"><strong className="font-semibold">Value:</strong> {service.content.value}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+              title={service.title}
+              content={service.content}
+              index={index}
+            />
           ))}
         </div>
       </section>
