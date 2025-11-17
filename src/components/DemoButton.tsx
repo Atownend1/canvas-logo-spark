@@ -14,7 +14,7 @@ interface DemoButtonProps {
   className?: string;
 }
 
-export function DemoButton({ variant = 'default', className = '' }: DemoButtonProps) {
+export function DemoButton({ variant = 'outline', className = '' }: DemoButtonProps) {
   const handleClick = () => {
     window.location.href = 'https://axionx-demo-showcase.lovable.app';
   };
@@ -23,7 +23,7 @@ export function DemoButton({ variant = 'default', className = '' }: DemoButtonPr
     <Button
       onClick={handleClick}
       variant={variant}
-      className={`${className} touch-manipulation active:scale-95 transition-transform`}
+      className={`rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300 min-h-[44px] min-w-[44px] px-6 sm:px-8 touch-manipulation ${className}`}
     >
       Experience DataController Demo →
     </Button>
