@@ -234,10 +234,7 @@ const Index = () => {
           }`}
         >
           <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8 sm:p-10 md:p-14 lg:p-16 text-center">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Start Your Journey</h2>
-            <p className="text-white/90 text-lg sm:text-xl md:text-2xl mb-10 sm:mb-12 leading-relaxed max-w-2xl mx-auto">
-              Ready to transform your business with AI and data? Let's talk.
-            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-10 sm:mb-12 leading-tight">Contact Us</h2>
             
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-7 text-left">
