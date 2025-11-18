@@ -195,7 +195,7 @@ All colors MUST be HSL.
   }
 
   .animate-fade-in-delayed {
-    animation: fade-in 1s ease-out 1.5s forwards;
+    animation: fade-in 1s ease-out 0.8s forwards;
     opacity: 0;
   }
 }

@@ -112,7 +112,7 @@ export default function ChatApp() {
             alt="AxionX Logo"
             className="w-48 h-auto animate-scale-in"
           />
-          <p className="text-center text-lg md:text-xl font-opensans text-foreground max-w-2xl animate-fade-in-delayed leading-relaxed">
+          <p className="text-center text-lg md:text-xl font-opensans text-foreground/90 max-w-2xl animate-fade-in-delayed leading-relaxed">
             Welcome to AxionX. We deliver AI-powered Finance Transformation with guaranteed outcomes. 
             Fixing your data governance permanently, and your cost exposure.
           </p>
