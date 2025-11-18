@@ -145,10 +145,10 @@ const Index = () => {
       />
       
       {/* Hero Section - iPhone optimized */}
-      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-20 sm:pt-0">
-        <div className="relative z-10 w-full flex flex-col items-center px-4 sm:px-6">
+      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-24 sm:pt-0">
+        <div className="relative z-10 w-full flex flex-col items-center px-6 sm:px-8 max-w-6xl mx-auto">
           {/* Logo - Mobile optimized sizing */}
-          <div className="animate-fade-in w-full max-w-[280px] sm:max-w-xl md:max-w-5xl flex justify-center my-8 sm:my-6 md:my-12">
+          <div className="animate-fade-in w-full max-w-[300px] sm:max-w-2xl md:max-w-4xl flex justify-center mb-12 sm:mb-16 md:mb-20">
             <img 
               src={axionxLogo} 
               alt="AxionX Logo" 
@@ -160,39 +160,39 @@ const Index = () => {
             />
           </div>
           
-          {/* Hero Content - iPhone optimized typography */}
-          <div className="text-center mt-4 sm:mt-8 max-w-full">
-            <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
+          {/* Hero Content - Enhanced typography and spacing */}
+          <div className="text-center w-full">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 max-w-4xl mx-auto mb-12 sm:mb-16 px-4 leading-relaxed font-light">
               We deliver AI-powered Finance Transformation with guaranteed outcomes. 
               Fixing your data governance permanently, and your cost exposure.
             </p>
-            <div className="flex flex-col items-center gap-3 px-4">
-              <DemoButton variant="default" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 min-h-[56px] w-full max-w-xs touch-manipulation" />
+            <div className="flex flex-col items-center">
+              <DemoButton variant="default" className="text-lg sm:text-xl px-10 sm:px-12 py-6 sm:py-7 min-h-[60px] w-full max-w-sm touch-manipulation font-medium" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Our Story Section - iPhone optimized */}
-      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative -mt-16 sm:-mt-[100px] py-12 sm:py-0">
+      {/* Our Story Section - Enhanced spacing and typography */}
+      <section id="our-story" className="min-h-screen flex items-center justify-center overflow-hidden relative py-20 sm:py-32">
         <div 
           ref={storyAnimation.ref}
-          className={`relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-6 md:p-12 mx-4 sm:mx-6 max-w-4xl transition-all duration-1000 ${
+          className={`relative z-10 backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8 sm:p-10 md:p-14 lg:p-16 mx-6 sm:mx-8 max-w-5xl transition-all duration-1000 ${
             storyAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight">Our Story</h2>
-          <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight">Our Story</h2>
+          <p className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed">
             AxionX isn't just another consultancy - it's a fundamental reimagining of how businesses integrate AI and data into their operations. You're creating a new category that bridges the gap between AI curiosity and practical execution, while simultaneously disrupting the traditional consulting model.
           </p>
         </div>
       </section>
 
-      {/* Services Section - iPhone optimized */}
-      <section id="services" className="relative overflow-hidden py-20 sm:py-24 md:py-32">
+      {/* Services Section - Enhanced spacing */}
+      <section id="services" className="relative overflow-hidden py-24 sm:py-32 md:py-40">
         <div 
           ref={servicesAnimation.ref}
-          className={`relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10 md:space-y-12 transition-all duration-1000 delay-200 ${
+          className={`relative z-10 w-full max-w-3xl mx-auto px-6 sm:px-8 space-y-10 sm:space-y-12 md:space-y-16 transition-all duration-1000 delay-200 ${
             servicesAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
@@ -207,36 +207,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section - iPhone optimized */}
-      <section id="contact" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-16 pb-10 sm:pt-10 sm:py-10 md:py-20">
+      {/* Contact Section - Enhanced spacing and typography */}
+      <section id="contact" className="min-h-screen flex items-center justify-center overflow-hidden relative py-24 sm:py-32">
         <div 
           ref={contactAnimation.ref}
-          className={`relative z-10 w-full max-w-2xl mx-4 sm:mx-6 transition-all duration-1000 delay-300 ${
+          className={`relative z-10 w-full max-w-3xl mx-6 sm:mx-8 transition-all duration-1000 delay-300 ${
             contactAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-2xl sm:rounded-3xl shadow-lg p-5 sm:p-6 md:p-12 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-3 md:mb-4 leading-tight">Start Your Journey</h2>
-            <p className="text-white text-sm sm:text-xs md:text-sm mb-6 sm:mb-6 md:mb-8 leading-relaxed">
+          <div className="backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-2xl p-8 sm:p-10 md:p-14 lg:p-16 text-center">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">Start Your Journey</h2>
+            <p className="text-white/90 text-lg sm:text-xl md:text-2xl mb-10 sm:mb-12 leading-relaxed max-w-2xl mx-auto">
               Ready to transform your business with AI and data? Let's talk.
             </p>
             
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6 text-left">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 sm:space-y-7 text-left">
                 <FormField
                   control={form.control}
                   name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white text-sm sm:text-base">Name *</FormLabel>
+                      <FormLabel className="text-white text-base sm:text-lg font-medium">Name *</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Your name" 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[48px] text-base"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[52px] text-base sm:text-lg"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
+                      <FormMessage className="text-red-300 text-sm" />
                     </FormItem>
                   )}
                 />
@@ -246,16 +246,16 @@ const Index = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white text-sm sm:text-base">Email *</FormLabel>
+                      <FormLabel className="text-white text-base sm:text-lg font-medium">Email *</FormLabel>
                       <FormControl>
                         <Input 
                           type="email"
                           placeholder="your@email.com" 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[48px] text-base"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[52px] text-base sm:text-lg"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
+                      <FormMessage className="text-red-300 text-sm" />
                     </FormItem>
                   )}
                 />
@@ -265,15 +265,15 @@ const Index = () => {
                   name="company"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white text-sm sm:text-base">Company</FormLabel>
+                      <FormLabel className="text-white text-base sm:text-lg font-medium">Company</FormLabel>
                       <FormControl>
                         <Input 
                           placeholder="Your company" 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[48px] text-base"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[52px] text-base sm:text-lg"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
+                      <FormMessage className="text-red-300 text-sm" />
                     </FormItem>
                   )}
                 />
@@ -283,22 +283,22 @@ const Index = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-white text-sm sm:text-base">Message *</FormLabel>
+                      <FormLabel className="text-white text-base sm:text-lg font-medium">Message *</FormLabel>
                       <FormControl>
                         <Textarea 
                           placeholder="Tell us about your data and AI needs..." 
                           {...field} 
-                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[140px] text-base resize-none"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 min-h-[160px] text-base sm:text-lg resize-none"
                         />
                       </FormControl>
-                      <FormMessage className="text-red-300 text-xs sm:text-sm" />
+                      <FormMessage className="text-red-300 text-sm" />
                     </FormItem>
                   )}
                 />
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-lg min-h-[52px] text-base font-semibold touch-manipulation"
+                  className="w-full bg-white/20 hover:bg-white/30 text-white border border-white/30 transition-all duration-300 hover:scale-105 hover:shadow-lg min-h-[58px] text-lg sm:text-xl font-semibold touch-manipulation mt-8"
                 >
                   Send Message
                 </Button>
