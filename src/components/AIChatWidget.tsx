@@ -53,7 +53,7 @@ export const AIChatWidget = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("https://axionx-website.onrender.com/ask", {
+      const response = await fetch("https://axionxlaunch.onrender.com/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
