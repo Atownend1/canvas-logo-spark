@@ -4,6 +4,7 @@ import Navigation from "@/components/Navigation";
 import ScrollToTop from "@/components/ScrollToTop";
 import { DemoButton } from "@/components/DemoButton";
 import { ServiceCard } from "@/components/ServiceCard";
+import { AIChatWidget } from "@/components/AIChatWidget";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -308,6 +309,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <AIChatWidget />
     </>
   );
 };
