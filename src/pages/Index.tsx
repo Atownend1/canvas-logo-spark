@@ -145,10 +145,10 @@ const Index = () => {
       />
       
       {/* Hero Section - iPhone optimized */}
-      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-24 sm:pt-0">
+      <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-16 sm:pt-0">
         <div className="relative z-10 w-full flex flex-col items-center px-6 sm:px-8 max-w-6xl mx-auto">
           {/* Logo - Mobile optimized sizing */}
-          <div className="animate-fade-in w-full max-w-[330px] sm:max-w-3xl md:max-w-5xl flex justify-center mb-12 sm:mb-16 md:mb-20">
+          <div className="animate-fade-in w-full max-w-[330px] sm:max-w-3xl md:max-w-5xl flex justify-center mb-8 sm:mb-12 md:mb-14">
             <img 
               src={axionxLogo} 
               alt="AxionX Logo" 
@@ -162,7 +162,7 @@ const Index = () => {
           
           {/* Hero Content - Enhanced typography and spacing */}
           <div className="text-center w-full">
-            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 max-w-4xl mx-auto mb-12 sm:mb-16 px-4 leading-relaxed font-light">
+            <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white/90 max-w-4xl mx-auto mb-10 sm:mb-12 px-4 leading-relaxed font-light">
               We deliver AI-powered Finance Transformation with guaranteed outcomes. 
               Fixing your data governance permanently, and your cost exposure.
             </p>
