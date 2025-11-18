@@ -25,7 +25,7 @@ export function DemoButton({ variant = 'outline', className = '' }: DemoButtonPr
       variant={variant}
       className={`rounded-full backdrop-blur-lg bg-white/10 border border-white/20 hover:bg-white/20 hover:border-white/30 text-white shadow-lg transition-all duration-300 min-h-[44px] min-w-[44px] px-6 sm:px-8 touch-manipulation ${className}`}
     >
-      Experience DataController Demo →
+      Platform Showcase →
     </Button>
   );
 }
