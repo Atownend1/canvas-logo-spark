@@ -182,9 +182,27 @@ const Index = () => {
           }`}
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 sm:mb-8 leading-tight">Our Story</h2>
-          <p className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed">
-            AxionX isn't just another consultancy - it's a fundamental reimagining of how businesses integrate AI and data into their operations. You're creating a new category that bridges the gap between AI curiosity and practical execution, while simultaneously disrupting the traditional consulting model.
-          </p>
+          <div className="text-white/90 text-base sm:text-lg md:text-xl leading-relaxed space-y-6">
+            <p>
+              Traditional consulting is no longer fit for a world where AI can reshape entire industries in months, not years.
+            </p>
+            <p>
+              AxionX is an AI-first consulting model that blends deep domain expertise with autonomous execution. We design, build, and deploy intelligent finance and performance systems that run continuously, improve themselves, and deliver measurable value.
+            </p>
+            <p>
+              AI is not a cost saving add-on. It's the difference between your organisation being relevant to your customers. Our customers are experiencing that with our operating model:
+            </p>
+            <ul className="list-disc list-inside space-y-2 ml-4">
+              <li>Fixed-price, milestone-based, outcome-aligned</li>
+              <li>AI agents working alongside human experts</li>
+              <li>Real-time governance, not static documentation</li>
+              <li>Owned delivery risk rather than "time & materials"</li>
+              <li>Faster, repeatable, scalable transformation</li>
+            </ul>
+            <p className="font-medium">
+              Book a 15 minute introduction call to understand our data readiness workshops to understand your AI ROI potential.
+            </p>
+          </div>
         </div>
       </section>
 
