@@ -162,11 +162,9 @@ const Index = () => {
           
           {/* Hero Content - iPhone optimized typography */}
           <div className="text-center mt-4 sm:mt-8 max-w-full">
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-4 sm:mb-6 px-4 leading-tight">
-              Welcome to AxionX
-            </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-blue-100 max-w-2xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed">
-              Transforming Data into Intelligence
+              We deliver AI-powered Finance Transformation with guaranteed outcomes. 
+              Fixing your data governance permanently, and your cost exposure.
             </p>
             <div className="flex flex-col items-center gap-3 px-4">
               <DemoButton variant="default" className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 min-h-[56px] w-full max-w-xs touch-manipulation" />
