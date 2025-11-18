@@ -161,3 +161,41 @@ All colors MUST be HSL.
     }
   }
 }
+
+@layer utilities {
+  @keyframes wave {
+    0%, 100% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(-25%) translateY(-5%);
+    }
+  }
+
+  @keyframes wave-delayed {
+    0%, 100% {
+      transform: translateX(0) translateY(0);
+    }
+    50% {
+      transform: translateX(25%) translateY(-5%);
+    }
+  }
+
+  .animate-wave {
+    animation: wave 3s ease-in-out infinite;
+  }
+
+  .animate-wave-delayed {
+    animation: wave-delayed 3s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 1s ease-out forwards;
+  }
+
+  .animate-fade-in-delayed {
+    animation: fade-in 1s ease-out 1.5s forwards;
+    opacity: 0;
+  }
+}
