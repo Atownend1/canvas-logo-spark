@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Loader2 } from "lucide-react";
+import { Send, Loader2, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Link } from "react-router-dom";
 
 interface Message {
   role: "user" | "ai";
@@ -125,6 +126,15 @@ export default function ChatApp() {
     <div className="fixed inset-0 flex flex-col bg-background animate-fade-in">
       {/* Header */}
       <div className="flex items-center justify-between p-4 bg-gradient-to-br from-primary via-accent to-secondary border-b border-border/50">
+        <Link to="/">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-primary-foreground hover:bg-primary-foreground/10"
+          >
+            <ArrowLeft className="h-5 w-5" />
+          </Button>
+        </Link>
         <div>
           <h1 className="text-xl font-montserrat font-bold text-primary-foreground">
             AxionX AI Assistant
@@ -133,6 +143,7 @@ export default function ChatApp() {
             Expert EPM & Finance Transformation Advice
           </p>
         </div>
+        <div className="w-10" /> {/* Spacer for centering */}
       </div>
 
       {/* Messages */}

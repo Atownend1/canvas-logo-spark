@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { MessageSquare } from "lucide-react";
 
 const Navigation = () => {
   const scrollToSection = (sectionId: string) => {
@@ -29,6 +31,16 @@ const Navigation = () => {
           >
             Contact
           </Button>
+
+          {/* AI Chat Link - Mobile optimized */}
+          <Link to="/chat">
+            <Button
+              className="rounded-full backdrop-blur-lg bg-primary/80 border border-primary/40 hover:bg-primary hover:border-primary/60 text-primary-foreground shadow-lg transition-all duration-300 min-h-[44px] min-w-[44px] px-4 sm:px-6 text-sm sm:text-base touch-manipulation flex items-center gap-2"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span className="hidden sm:inline">AI Chat</span>
+            </Button>
+          </Link>
 
           {/* Right: AI Readiness Report Text - Hidden on mobile, shows on tablet+ */}
           <div className="hidden lg:block text-white font-medium text-xs sm:text-sm tracking-wider cursor-pointer touch-manipulation active:opacity-70" onClick={() => scrollToSection('contact')}>
