@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
@@ -14,6 +17,19 @@ import {
 import { Checkbox } from './ui/checkbox';
 import { X } from 'lucide-react';
 
+const demoSchema = z.object({
+  full_name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
+  company_name: z.string().trim().min(1, "Company name is required").max(100, "Company name must be less than 100 characters"),
+  email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
+  phone: z.string().trim().max(20, "Phone number must be less than 20 characters").optional().or(z.literal('')),
+  role: z.string().trim().min(1, "Role is required").max(100, "Role must be less than 100 characters"),
+  company_size: z.string().max(50).optional().or(z.literal('')),
+  country: z.string().max(100),
+  interested_areas: z.array(z.string()).max(10, "Too many selections (max 10)")
+});
+
+type DemoFormData = z.infer<typeof demoSchema>;
+
 interface DemoRequestModalProps {
   onClose: () => void;
 }
@@ -21,27 +37,39 @@ interface DemoRequestModalProps {
 export function DemoRequestModal({ onClose }: DemoRequestModalProps) {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    full_name: '',
-    company_name: '',
-    email: '',
-    role: '',
-    company_size: '',
-    phone: '',
-    country: 'United Kingdom',
-    interested_areas: [] as string[],
+  
+  const { register, handleSubmit: handleFormSubmit, formState: { errors }, setValue, watch } = useForm<DemoFormData>({
+    resolver: zodResolver(demoSchema),
+    defaultValues: {
+      full_name: '',
+      company_name: '',
+      email: '',
+      role: '',
+      company_size: '',
+      phone: '',
+      country: 'United Kingdom',
+      interested_areas: [],
+    }
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const formData = watch();
+
+  const handleSubmit = async (data: DemoFormData) => {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase
+      const { data: result, error } = await supabase
         .from('demo_requests')
         .insert([
           {
-            ...formData,
+            full_name: data.full_name,
+            company_name: data.company_name,
+            email: data.email,
+            role: data.role,
+            company_size: data.company_size || '',
+            phone: data.phone || '',
+            country: data.country,
+            interested_areas: data.interested_areas,
             source: 'landing_page',
             status: 'new',
           },
@@ -65,7 +93,7 @@ export function DemoRequestModal({ onClose }: DemoRequestModalProps) {
       });
 
       // Redirect to demo with token
-      const demoUrl = `https://axionx-demo-showcase.lovable.app?token=${data.demo_token}&welcome=true`;
+      const demoUrl = `https://axionx-demo-showcase.lovable.app?token=${result.demo_token}&welcome=true`;
       window.location.href = demoUrl;
     } catch (err) {
       console.error('Error submitting demo request:', err);
@@ -78,17 +106,12 @@ export function DemoRequestModal({ onClose }: DemoRequestModalProps) {
     }
   };
 
-  const handleChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleCheckboxChange = (area: string, checked: boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      interested_areas: checked
-        ? [...prev.interested_areas, area]
-        : prev.interested_areas.filter((a) => a !== area),
-    }));
+    const currentAreas = formData.interested_areas || [];
+    setValue(
+      'interested_areas',
+      checked ? [...currentAreas, area] : currentAreas.filter((a) => a !== area)
+    );
   };
 
   const interestAreas = [
@@ -122,17 +145,16 @@ export function DemoRequestModal({ onClose }: DemoRequestModalProps) {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleFormSubmit(handleSubmit)} className="p-6 space-y-4">
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="full_name">Full Name *</Label>
               <Input
                 id="full_name"
-                required
-                value={formData.full_name}
-                onChange={(e) => handleChange('full_name', e.target.value)}
+                {...register('full_name')}
                 placeholder="John Smith"
               />
+              {errors.full_name && <p className="text-sm text-destructive mt-1">{errors.full_name.message}</p>}
             </div>
 
             <div>
@@ -140,27 +162,25 @@ export function DemoRequestModal({ onClose }: DemoRequestModalProps) {
               <Input
                 id="email"
                 type="email"
-                required
-                value={formData.email}
-                onChange={(e) => handleChange('email', e.target.value)}
+                {...register('email')}
                 placeholder="john@company.com"
               />
+              {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
             </div>
 
             <div>
               <Label htmlFor="company_name">Company Name *</Label>
               <Input
                 id="company_name"
-                required
-                value={formData.company_name}
-                onChange={(e) => handleChange('company_name', e.target.value)}
+                {...register('company_name')}
                 placeholder="Acme Corp"
               />
+              {errors.company_name && <p className="text-sm text-destructive mt-1">{errors.company_name.message}</p>}
             </div>
 
             <div>
               <Label htmlFor="role">Your Role *</Label>
-              <Select required value={formData.role} onValueChange={(value) => handleChange('role', value)}>
+              <Select value={formData.role} onValueChange={(value) => setValue('role', value)}>
                 <SelectTrigger id="role">
                   <SelectValue placeholder="Select your role" />
                 </SelectTrigger>
@@ -175,11 +195,12 @@ export function DemoRequestModal({ onClose }: DemoRequestModalProps) {
                   <SelectItem value="Other">Other</SelectItem>
                 </SelectContent>
               </Select>
+              {errors.role && <p className="text-sm text-destructive mt-1">{errors.role.message}</p>}
             </div>
 
             <div>
               <Label htmlFor="company_size">Company Size</Label>
-              <Select value={formData.company_size} onValueChange={(value) => handleChange('company_size', value)}>
+              <Select value={formData.company_size} onValueChange={(value) => setValue('company_size', value)}>
                 <SelectTrigger id="company_size">
                   <SelectValue placeholder="Select size" />
                 </SelectTrigger>
@@ -198,10 +219,10 @@ export function DemoRequestModal({ onClose }: DemoRequestModalProps) {
               <Input
                 id="phone"
                 type="tel"
-                value={formData.phone}
-                onChange={(e) => handleChange('phone', e.target.value)}
+                {...register('phone')}
                 placeholder="+44 20 1234 5678"
               />
+              {errors.phone && <p className="text-sm text-destructive mt-1">{errors.phone.message}</p>}
             </div>
           </div>
 
