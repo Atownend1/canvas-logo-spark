@@ -148,14 +148,14 @@ const Index = () => {
       <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-24 sm:pt-0">
         <div className="relative z-10 w-full flex flex-col items-center px-6 sm:px-8 max-w-6xl mx-auto">
           {/* Logo - Mobile optimized sizing */}
-          <div className="animate-fade-in w-full max-w-[300px] sm:max-w-2xl md:max-w-4xl flex justify-center mb-12 sm:mb-16 md:mb-20">
+          <div className="animate-fade-in w-full max-w-[330px] sm:max-w-3xl md:max-w-5xl flex justify-center mb-12 sm:mb-16 md:mb-20">
             <img 
               src={axionxLogo} 
               alt="AxionX Logo" 
               className="w-full md:px-8" 
               style={{
                 clipPath: 'inset(0 40% 0 0)',
-                transform: 'translateX(40px) translateY(-20px)'
+                transform: 'translateX(60px) translateY(-20px)'
               }} 
             />
           </div>
