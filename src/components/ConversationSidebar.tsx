@@ -5,6 +5,13 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Plus, MessageSquare, Trash2, LogOut } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarHeader,
+  SidebarFooter,
+  useSidebar,
+} from "@/components/ui/sidebar";
 
 interface Conversation {
   id: string;
@@ -25,6 +32,7 @@ export const ConversationSidebar = ({
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { open, setOpen } = useSidebar();
 
   const loadConversations = async () => {
     const { data, error } = await supabase
@@ -63,6 +71,14 @@ export const ConversationSidebar = ({
     };
   }, []);
 
+  const handleSelectConversation = (id: string | null) => {
+    onSelectConversation(id);
+    // Close sidebar on mobile after selection
+    if (window.innerWidth < 768) {
+      setOpen(false);
+    }
+  };
+
   const handleDelete = async (id: string, e: React.MouseEvent) => {
     e.stopPropagation();
     const { error } = await supabase.from("conversations").delete().eq("id", id);
@@ -88,49 +104,51 @@ export const ConversationSidebar = ({
   };
 
   return (
-    <div className="w-64 bg-card border-r border-border/50 flex flex-col h-full">
-      <div className="p-4 border-b border-border/50">
+    <Sidebar collapsible="offcanvas">
+      <SidebarHeader className="p-4 border-b border-border/50">
         <Button
-          onClick={() => onSelectConversation(null)}
+          onClick={() => handleSelectConversation(null)}
           className="w-full bg-primary hover:bg-primary/90"
         >
           <Plus className="h-4 w-4 mr-2" />
           New Chat
         </Button>
-      </div>
+      </SidebarHeader>
 
-      <ScrollArea className="flex-1">
-        <div className="p-2 space-y-1">
-          {conversations.map((conv) => (
-            <div
-              key={conv.id}
-              onClick={() => onSelectConversation(conv.id)}
-              className={`group flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
-                currentConversationId === conv.id
-                  ? "bg-primary/10 text-primary"
-                  : "hover:bg-muted/50"
-              }`}
-            >
-              <div className="flex items-center gap-2 flex-1 min-w-0">
-                <MessageSquare className="h-4 w-4 flex-shrink-0" />
-                <span className="text-sm truncate font-opensans">
-                  {conv.title}
-                </span>
-              </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                onClick={(e) => handleDelete(conv.id, e)}
+      <SidebarContent>
+        <ScrollArea className="flex-1">
+          <div className="p-2 space-y-1">
+            {conversations.map((conv) => (
+              <div
+                key={conv.id}
+                onClick={() => handleSelectConversation(conv.id)}
+                className={`group flex items-center justify-between p-3 rounded-lg cursor-pointer transition-colors ${
+                  currentConversationId === conv.id
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-muted/50"
+                }`}
               >
-                <Trash2 className="h-3 w-3" />
-              </Button>
-            </div>
-          ))}
-        </div>
-      </ScrollArea>
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                  <MessageSquare className="h-4 w-4 flex-shrink-0" />
+                  <span className="text-sm truncate font-opensans">
+                    {conv.title}
+                  </span>
+                </div>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
+                  onClick={(e) => handleDelete(conv.id, e)}
+                >
+                  <Trash2 className="h-3 w-3" />
+                </Button>
+              </div>
+            ))}
+          </div>
+        </ScrollArea>
+      </SidebarContent>
 
-      <div className="p-4 border-t border-border/50">
+      <SidebarFooter className="p-4 border-t border-border/50">
         <Button
           variant="outline"
           onClick={handleSignOut}
@@ -139,7 +157,7 @@ export const ConversationSidebar = ({
           <LogOut className="h-4 w-4 mr-2" />
           Sign Out
         </Button>
-      </div>
-    </div>
+      </SidebarFooter>
+    </Sidebar>
   );
 };
