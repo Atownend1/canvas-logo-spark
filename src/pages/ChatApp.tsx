@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Send, Loader2 } from "lucide-react";
+import { Send, Loader2, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { ConversationSidebar } from "@/components/ConversationSidebar";
 import { useToast } from "@/hooks/use-toast";
 import type { User } from "@supabase/supabase-js";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 interface Message {
   role: "user" | "ai";
@@ -234,23 +235,27 @@ export default function ChatApp() {
   }
 
   return (
-    <div className="fixed inset-0 flex bg-background animate-fade-in">
-      <ConversationSidebar
-        currentConversationId={currentConversationId}
-        onSelectConversation={handleSelectConversation}
-      />
-      
-      <div className="flex-1 flex flex-col">
-        <div className="flex items-center justify-center p-4 bg-gradient-to-br from-primary via-accent to-secondary border-b border-border/50">
-          <div className="text-center">
-            <h1 className="text-xl font-montserrat font-bold text-primary-foreground">
-              AxionX AI Assistant
-            </h1>
-            <p className="text-sm text-primary-foreground/90 font-opensans">
-              Expert EPM & Finance Transformation Advice
-            </p>
+    <SidebarProvider defaultOpen={false}>
+      <div className="fixed inset-0 flex w-full bg-background animate-fade-in">
+        <ConversationSidebar
+          currentConversationId={currentConversationId}
+          onSelectConversation={handleSelectConversation}
+        />
+        
+        <div className="flex-1 flex flex-col min-w-0">
+          <div className="flex items-center gap-2 p-4 bg-gradient-to-br from-primary via-accent to-secondary border-b border-border/50">
+            <SidebarTrigger className="md:hidden text-primary-foreground">
+              <Menu className="h-5 w-5" />
+            </SidebarTrigger>
+            <div className="flex-1 text-center md:text-center">
+              <h1 className="text-xl font-montserrat font-bold text-primary-foreground">
+                AxionX AI Assistant
+              </h1>
+              <p className="text-sm text-primary-foreground/90 font-opensans">
+                Expert EPM & Finance Transformation Advice
+              </p>
+            </div>
           </div>
-        </div>
 
       {/* Messages */}
       <ScrollArea className="flex-1 p-4 bg-muted/30">
@@ -311,7 +316,8 @@ export default function ChatApp() {
           </Button>
         </div>
       </div>
+        </div>
       </div>
-    </div>
+    </SidebarProvider>
   );
 }
