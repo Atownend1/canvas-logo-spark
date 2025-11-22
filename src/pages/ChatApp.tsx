@@ -9,12 +9,20 @@ import { ConversationSidebar } from "@/components/ConversationSidebar";
 import { useToast } from "@/hooks/use-toast";
 import type { User } from "@supabase/supabase-js";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { z } from "zod";
 
 interface Message {
   role: "user" | "ai";
   content: string;
   timestamp: Date;
 }
+
+const chatInputSchema = z.object({
+  message: z.string()
+    .trim()
+    .min(1, "Message cannot be empty")
+    .max(2000, "Message must be less than 2000 characters")
+});
 
 export default function ChatApp() {
   const [user, setUser] = useState<User | null>(null);
@@ -136,6 +144,17 @@ export default function ChatApp() {
     const question = input.trim();
     if (!question || isLoading || !user) return;
 
+    // Validate input
+    const validation = chatInputSchema.safeParse({ message: question });
+    if (!validation.success) {
+      toast({
+        title: "Invalid input",
+        description: validation.error.errors[0].message,
+        variant: "destructive",
+      });
+      return;
+    }
+
     const userMessage: Message = {
       role: "user",
       content: question,
@@ -166,7 +185,8 @@ export default function ChatApp() {
 
       await saveMessage(conversationId, "user", question);
 
-      const response = await fetch("https://kaitlyn-uncommendatory-valene.ngrok-free.dev/ask", {
+      const apiUrl = import.meta.env.VITE_API_URL || "https://kaitlyn-uncommendatory-valene.ngrok-free.dev";
+      const response = await fetch(`${apiUrl}/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
