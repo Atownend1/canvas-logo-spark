@@ -3,6 +3,8 @@ import { MessageCircle, X, Send, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
 
 interface Message {
   role: "user" | "ai";
@@ -10,7 +12,15 @@ interface Message {
   timestamp: Date;
 }
 
+const chatInputSchema = z.object({
+  message: z.string()
+    .trim()
+    .min(1, "Message cannot be empty")
+    .max(2000, "Message must be less than 2000 characters")
+});
+
 export const AIChatWidget = () => {
+  const { toast } = useToast();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -42,6 +52,17 @@ export const AIChatWidget = () => {
     const question = input.trim();
     if (!question || isLoading) return;
 
+    // Validate input
+    const validation = chatInputSchema.safeParse({ message: question });
+    if (!validation.success) {
+      toast({
+        title: "Invalid input",
+        description: validation.error.errors[0].message,
+        variant: "destructive",
+      });
+      return;
+    }
+
     const userMessage: Message = {
       role: "user",
       content: question,
@@ -53,7 +74,8 @@ export const AIChatWidget = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("https://kaitlyn-uncommendatory-valene.ngrok-free.dev/ask", {
+      const apiUrl = import.meta.env.VITE_API_URL || "https://kaitlyn-uncommendatory-valene.ngrok-free.dev";
+      const response = await fetch(`${apiUrl}/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question }),
