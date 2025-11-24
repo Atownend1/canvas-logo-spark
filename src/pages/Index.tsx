@@ -148,7 +148,7 @@ const Index = () => {
       <section id="hero" className="min-h-screen flex items-center justify-center overflow-hidden relative pt-16 sm:pt-0">
         <div className="relative z-10 w-full flex flex-col items-center px-6 sm:px-8 max-w-6xl mx-auto">
           {/* Logo - Mobile optimized sizing */}
-          <div className="animate-fade-in w-full max-w-[330px] sm:max-w-3xl md:max-w-5xl flex justify-center mb-8 sm:mb-12 md:mb-14">
+          <div className="animate-fade-in w-full max-w-[330px] sm:max-w-3xl md:max-w-5xl flex justify-center mb-2.5">
             <img 
               src={axionxLogo} 
               alt="AxionX Logo" 
@@ -158,6 +158,18 @@ const Index = () => {
                 transform: 'translateX(60px) translateY(-20px)'
               }} 
             />
+          </div>
+
+          {/* Taglines */}
+          <div className="flex flex-col items-center gap-1 mb-8 sm:mb-12 md:mb-14">
+            <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 text-white">
+              <span className="text-lg sm:text-xl md:text-2xl font-light">Outthink.</span>
+              <div className="flex flex-col items-center">
+                <span className="text-lg sm:text-xl md:text-2xl font-light">Outpace.</span>
+                <span className="text-base sm:text-lg md:text-xl font-light italic">BeInspired</span>
+              </div>
+              <span className="text-lg sm:text-xl md:text-2xl font-light">Outperform</span>
+            </div>
           </div>
           
           {/* Hero Content - Enhanced typography and spacing */}
