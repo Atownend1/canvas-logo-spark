@@ -151,7 +151,7 @@ const Index = () => {
           <div className="animate-fade-in w-full max-w-[330px] sm:max-w-3xl md:max-w-5xl flex justify-center mb-2.5">
             <img 
               src={axionxLogo} 
-              alt="AxionX Logo" 
+              alt="public public public"
               className="w-full md:px-8" 
               style={{
                 clipPath: 'inset(0 40% 0 0)',
