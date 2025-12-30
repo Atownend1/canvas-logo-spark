@@ -131,7 +131,12 @@ const Index = () => {
           </div>
           
           {/* Hero Content - Enhanced typography and spacing */}
-          <div className="text-center w-full">
+          <div className="text-center w-full flex flex-col items-center">
+            <img 
+              src={axionxLogo} 
+              alt="AxionX Logo" 
+              className="h-16 sm:h-20 md:h-24 mb-6 sm:mb-8"
+            />
             <p className="text-xl sm:text-2xl md:text-3xl max-w-4xl mx-auto mb-10 sm:mb-12 px-4 leading-relaxed font-sans lg:text-3xl text-slate-100 pl-[18px] pr-0 text-center font-medium">
               We deliver AI-powered Finance Transformation with guaranteed outcomes. 
               Fixing your data governance permanently, and your cost exposure.
